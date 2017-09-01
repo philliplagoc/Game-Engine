@@ -33,4 +33,9 @@ public abstract class UI extends Pane {
 	 * Updates the UI depending on the Sprites passed in.
 	 */
 	public abstract void updateUI(Sprite... sprites);
+	
+	/**
+	 * Initializes the statistics used to debug the game.
+	 */
+	public abstract void initStats(Sprite... sprites); 
 }
