@@ -88,14 +88,44 @@ public abstract class Sprite {
 	public abstract boolean didCollideWith(Sprite other);
 
 	/**
-	 * Determines if this Sprite collided with the wall. Will be overridden in child
+	 * Determines if this Sprite collided with the top wall. Will be overridden in child
 	 * classes.
 	 * 
 	 * @param canvas
 	 *            The canvas to check boundaries on.
-	 * @return Whether or not this collided with the scene's walls.
+	 * @return Whether or not this collided with the scene's top wall.
 	 */
-	public abstract boolean didCollideWithWalls(Canvas canvas);
+	public abstract boolean didCollideWithTopWall(Canvas canvas);
+	
+	/**
+	 * Determines if this Sprite collided with the bottom wall. Will be overridden in child
+	 * classes.
+	 * 
+	 * @param canvas
+	 *            The canvas to check boundaries on.
+	 * @return Whether or not this collided with the scene's bottom wall.
+	 */
+	public abstract boolean didCollideWithBotWall(Canvas canvas);
+	
+	/**
+	 * Determines if this Sprite collided with the left wall. Will be overridden in child
+	 * classes.
+	 * 
+	 * @param canvas
+	 *            The canvas to check boundaries on.
+	 * @return Whether or not this collided with the scene's left wall.
+	 */
+	public abstract boolean didCollideWithLeftWall(Canvas canvas);
+	
+	/**
+	 * Determines if this Sprite collided with the right wall. Will be overridden in child
+	 * classes.
+	 * 
+	 * @param canvas
+	 *            The canvas to check boundaries on.
+	 * @return Whether or not this collided with the scene's right wall.
+	 */
+	public abstract boolean didCollideWithRightWall(Canvas canvas);
 
 	/**
 	 * Draws the Sprite using the GraphicsContext specified.
