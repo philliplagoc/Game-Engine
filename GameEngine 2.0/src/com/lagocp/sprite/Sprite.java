@@ -45,7 +45,7 @@ public abstract class Sprite {
 
 		this.render(gc);
 	}
-
+	
 	/**
 	 * Determines if this Sprite collided with another. Will be overridden in child
 	 * classes.
