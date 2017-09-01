@@ -6,6 +6,7 @@ package com.lagocp.gameEngine.sprite;
  */
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 
 public abstract class Sprite {
 	protected double x; // Top left x
@@ -20,6 +21,8 @@ public abstract class Sprite {
 	private double centerY;
 	private double halfWidth;
 	private double halfHeight;
+
+	private Image image;
 
 	/**
 	 * Creates a Sprite and renders it using the passed in GraphicsContext.
@@ -49,7 +52,28 @@ public abstract class Sprite {
 
 		this.render(gc);
 	}
-	
+
+	public Sprite(String imageFile, double x, double y, double width, double height, GraphicsContext gc) {
+		this(x, y, width, height, gc);
+		
+		try {
+			this.image = new Image(imageFile);
+			
+			// Recalculating Sprite x and y positions
+			setWidth(image.getWidth());
+			setHeight(image.getHeight());
+			
+			setHalfWidth(getWidth() / 2);
+			setHalfHeight(getHeight() / 2);
+			
+			setCenterX(getX() + getHalfWidth());
+			setCenterY(getY() + getHalfHeight());
+			
+		} catch (Exception e) {
+			System.out.println(imageFile + " does not exist.");
+		}
+	}
+
 	/**
 	 * Determines if this Sprite collided with another. Will be overridden in child
 	 * classes.
@@ -87,11 +111,15 @@ public abstract class Sprite {
 	public void update(double time) {
 		this.x += this.getvX() * time;
 		this.y += this.getvY() * time;
-		
+
 		this.setCenterX(this.getX() + this.getHalfWidth());
 		this.setCenterY(this.getY() + this.getHalfHeight());
 	}
 
+	public Image getImage() {
+		return image;
+	}
+	
 	public double getX() {
 		return x;
 	}
@@ -132,6 +160,10 @@ public abstract class Sprite {
 		return halfHeight;
 	}
 
+	public void setImage(Image image) {
+		this.image = image;
+	}
+	
 	public void setX(double x) {
 		this.x = x;
 	}
@@ -171,5 +203,5 @@ public abstract class Sprite {
 	public void setHalfHeight(double halfHeight) {
 		this.halfHeight = halfHeight;
 	}
-
+	
 }
