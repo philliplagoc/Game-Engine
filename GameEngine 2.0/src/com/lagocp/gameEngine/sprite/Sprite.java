@@ -1,4 +1,4 @@
-package com.lagocp.sprite;
+package com.lagocp.gameEngine.sprite;
 
 /**
  * This abstract class holds the necessary abstractions for a Sprite in a game.
