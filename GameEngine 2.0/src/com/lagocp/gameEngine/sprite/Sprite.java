@@ -72,6 +72,8 @@ public abstract class Sprite {
 		} catch (Exception e) {
 			System.out.println(imageFile + " does not exist.");
 		}
+		
+		render(gc);
 	}
 
 	/**
