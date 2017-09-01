@@ -54,7 +54,8 @@ public abstract class Sprite {
 	}
 
 	public Sprite(String imageFile, double x, double y, double width, double height, GraphicsContext gc) {
-		this(x, y, width, height, gc);
+		setX(x);
+		setY(y);
 		
 		try {
 			this.image = new Image(imageFile);
