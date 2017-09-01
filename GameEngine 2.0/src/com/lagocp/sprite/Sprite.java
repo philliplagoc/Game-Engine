@@ -1,7 +1,8 @@
 package com.lagocp.sprite;
 
 /**
- * HELLLLLLO
+ * This abstract class holds the necessary abstractions for a Sprite in a game.
+ * Each Sprite will have their own definition of rendering and handling collisions.
  */
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
