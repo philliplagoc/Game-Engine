@@ -38,4 +38,8 @@ public abstract class UI extends Pane {
 	 * Initializes the statistics used to debug the game.
 	 */
 	public abstract void initStats(Sprite... sprites); 
+	
+	public Canvas getCanvas() {
+		return canvas;
+	}
 }
