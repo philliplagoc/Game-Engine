@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
  */
 public abstract class UI extends Pane {
 	private Canvas canvas;
-
+	
 	public UI(Canvas canvas) {
 		this.canvas = canvas;
 	}
