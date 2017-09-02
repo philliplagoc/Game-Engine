@@ -2,6 +2,7 @@ package com.lagocp.gameEngine.ui;
 
 import com.lagocp.gameEngine.sprite.Sprite;
 
+import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.layout.Pane;
 
@@ -24,10 +25,10 @@ public abstract class UI extends Pane {
 	public abstract void create();
 
 	/**
-	 * Places the canvas.
+	 * Places the canvas in the designated root.
 	 * The canvas is where the Sprites and such are drawn onto.
 	 */
-	public abstract void placeCanvas();
+	public abstract void placeCanvas(Group root);
 	
 	/**
 	 * Updates the UI depending on the Sprites passed in.
