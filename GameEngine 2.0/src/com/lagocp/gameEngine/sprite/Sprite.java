@@ -7,6 +7,7 @@ package com.lagocp.gameEngine.sprite;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public abstract class Sprite {
 	protected double x; // Top left x
@@ -56,24 +57,24 @@ public abstract class Sprite {
 	public Sprite(String imageFile, double x, double y, double width, double height, GraphicsContext gc) {
 		setX(x);
 		setY(y);
-		
+
 		try {
 			this.image = new Image(imageFile);
-			
+
 			// Recalculating Sprite x and y positions
 			setWidth(image.getWidth());
 			setHeight(image.getHeight());
-			
+
 			setHalfWidth(getWidth() / 2);
 			setHalfHeight(getHeight() / 2);
-			
+
 			setCenterX(getX() + getHalfWidth());
 			setCenterY(getY() + getHalfHeight());
-			
+
 		} catch (Exception e) {
 			System.out.println(imageFile + " does not exist.");
 		}
-		
+
 		render(gc);
 	}
 
@@ -88,38 +89,38 @@ public abstract class Sprite {
 	public abstract boolean didCollideWith(Sprite other);
 
 	/**
-	 * Determines if this Sprite collided with the top wall. Will be overridden in child
-	 * classes.
+	 * Determines if this Sprite collided with the top wall. Will be overridden in
+	 * child classes.
 	 * 
 	 * @param canvas
 	 *            The canvas to check boundaries on.
 	 * @return Whether or not this collided with the scene's top wall.
 	 */
 	public abstract boolean didCollideWithTopWall(Canvas canvas);
-	
+
 	/**
-	 * Determines if this Sprite collided with the bottom wall. Will be overridden in child
-	 * classes.
+	 * Determines if this Sprite collided with the bottom wall. Will be overridden
+	 * in child classes.
 	 * 
 	 * @param canvas
 	 *            The canvas to check boundaries on.
 	 * @return Whether or not this collided with the scene's bottom wall.
 	 */
 	public abstract boolean didCollideWithBotWall(Canvas canvas);
-	
+
 	/**
-	 * Determines if this Sprite collided with the left wall. Will be overridden in child
-	 * classes.
+	 * Determines if this Sprite collided with the left wall. Will be overridden in
+	 * child classes.
 	 * 
 	 * @param canvas
 	 *            The canvas to check boundaries on.
 	 * @return Whether or not this collided with the scene's left wall.
 	 */
 	public abstract boolean didCollideWithLeftWall(Canvas canvas);
-	
+
 	/**
-	 * Determines if this Sprite collided with the right wall. Will be overridden in child
-	 * classes.
+	 * Determines if this Sprite collided with the right wall. Will be overridden in
+	 * child classes.
 	 * 
 	 * @param canvas
 	 *            The canvas to check boundaries on.
@@ -149,10 +150,31 @@ public abstract class Sprite {
 		this.setCenterY(this.getY() + this.getHalfHeight());
 	}
 
+	/**
+	 * Scales the image
+	 * 
+	 * @param source
+	 *            The image to scale
+	 * @param targetWidth
+	 *            The desired width of the image
+	 * @param targetHeight
+	 *            The desired height of the image
+	 * @param preserveRatio
+	 *            ?
+	 * @return The scaled Image
+	 */
+	public Image scaleImage(Image source, double targetWidth, double targetHeight, boolean preserveRatio) {
+		ImageView imageView = new ImageView(source);
+		imageView.setPreserveRatio(preserveRatio);
+		imageView.setFitWidth(targetWidth);
+		imageView.setFitHeight(targetHeight);
+		return imageView.snapshot(null, null);
+	}
+
 	public Image getImage() {
 		return image;
 	}
-	
+
 	public double getX() {
 		return x;
 	}
@@ -196,7 +218,7 @@ public abstract class Sprite {
 	public void setImage(Image image) {
 		this.image = image;
 	}
-	
+
 	public void setX(double x) {
 		this.x = x;
 	}
@@ -236,5 +258,5 @@ public abstract class Sprite {
 	public void setHalfHeight(double halfHeight) {
 		this.halfHeight = halfHeight;
 	}
-	
+
 }
